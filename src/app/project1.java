@@ -1,4 +1,5 @@
 package app;
+
 import service.InventoryService;
 import service.SupplierService;
 import model.*;
@@ -6,12 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-
 public class project1 {
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
-       InventoryService service = new InventoryService();
+        InventoryService service = new InventoryService();
         SupplierService service2 = new SupplierService();
 
         Supplier s1 = new Supplier(1, "9034", "Suresh");
@@ -115,6 +115,28 @@ public class project1 {
             Product p = new Product(id, name, price, quantity, selectedCategory, selectedSupplier);
             service.addProduct(p);
 
+        }
+
+        System.out.println("enter product id to update : ");
+        int updateID = sc.nextInt();
+
+        int newqty;
+        while (true) {
+            System.out.println("enter new quantity");
+            newqty = sc.nextInt();
+
+            if (newqty >= 0) {
+                break;
+            }
+            System.out.println("enter number >= 0");
+        }
+
+        boolean updated = service.updateProductQuantity(updateID, newqty);
+
+        if (updated) {
+            System.out.println("quantity updated successfully");
+        } else {
+            System.out.println("product not found");
         }
 
         // Filter by category

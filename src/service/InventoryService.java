@@ -44,4 +44,16 @@ public class InventoryService {
         return false;
     }
 
+    public boolean updateProductQuantity(int Productid , int newQuantity)
+    {
+        for(Product p :products){
+            if(p.getId() == Productid){
+                p.setQuantity(newQuantity);
+                return true;
+            }
+        }
+        return false;
+    }
+
+
 }
