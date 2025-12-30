@@ -139,6 +139,21 @@ public class project1 {
             System.out.println("product not found");
         }
 
+        System.out.print("Enter low stock threshold: ");
+int threshold = sc.nextInt();
+
+List<Product> lowStockProducts = service.getLowStockProducts(threshold);
+
+if (lowStockProducts.isEmpty()) {
+    System.out.println("No low stock items.");
+} else {
+    System.out.println("⚠ LOW STOCK ITEMS:");
+    for (Product p : lowStockProducts) {
+        System.out.println("⚠ " + p.getProductName() + " (qty=" + p.getQuantity() + ")");
+    }
+}
+
+
         // Filter by category
         for (CategoryType category : CategoryType.values()) {
             List<Product> ProductByCategoryType = service.filterByCategory(category);

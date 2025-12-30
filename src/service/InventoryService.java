@@ -2,6 +2,9 @@ package service;
 import model.Product;
 import model.CategoryType;
 import java.util.List;
+
+import app.project1;
+
 import java.util.ArrayList;
 
 public class InventoryService {
@@ -55,5 +58,14 @@ public class InventoryService {
         return false;
     }
 
+    public List<Product> getLowStockProducts(int threshold) {
+    List<Product> result = new ArrayList<>();
+    for (Product p : products) {
+        if (p.getQuantity() <= threshold) {
+            result.add(p);
+        }
+    }
+    return result;
+}
 
 }
