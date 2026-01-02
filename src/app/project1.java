@@ -117,6 +117,7 @@ public class project1 {
 
         }
 
+        //new quantity
         System.out.println("enter product id to update : ");
         int updateID = sc.nextInt();
 
@@ -139,20 +140,32 @@ public class project1 {
             System.out.println("product not found");
         }
 
+        //lowstock
         System.out.print("Enter low stock threshold: ");
-int threshold = sc.nextInt();
+        int threshold = sc.nextInt();
 
-List<Product> lowStockProducts = service.getLowStockProducts(threshold);
+        List<Product> lowStockProducts = service.getLowStockProducts(threshold);
 
-if (lowStockProducts.isEmpty()) {
-    System.out.println("No low stock items.");
-} else {
-    System.out.println("⚠ LOW STOCK ITEMS:");
-    for (Product p : lowStockProducts) {
-        System.out.println("⚠ " + p.getProductName() + " (qty=" + p.getQuantity() + ")");
-    }
-}
+        if (lowStockProducts.isEmpty()) {
+            System.out.println("No low stock items.");
+        } else {
+            System.out.println("⚠ LOW STOCK ITEMS:");
+            for (Product p : lowStockProducts) {
+                System.out.println("⚠ " + p.getProductName() + " (qty=" + p.getQuantity() + ")");
+            }
+        }
+        // delete product by id
 
+        System.out.println("enter product id to delete");
+        int deleteId = sc.nextInt();
+
+        boolean deleted = service.deleteProductById(deleteId);
+        if(deleted){
+            System.out.println("product deleted succesfully ");
+        }
+        else{
+            System.out.println("product not found");
+        }
 
         // Filter by category
         for (CategoryType category : CategoryType.values()) {

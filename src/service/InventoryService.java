@@ -68,4 +68,16 @@ public class InventoryService {
     return result;
 }
 
+public boolean deleteProductById (int Productid ){
+    for(int i= 0;i< products.size() ;i++)
+    {
+        if(products.get(i).getId() == Productid)
+        {
+            products.remove(i);
+            return true;
+        }
+    }
+
+    return false;
+}
 }
